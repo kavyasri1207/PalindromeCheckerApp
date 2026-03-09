@@ -1,23 +1,28 @@
+/**
+ * @author Kuljot
+ * @version 4.0
+ */
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Original string
-        String original = "level";
+        System.out.println("Welcome to the Palindrome Checker Management System");
+        System.out.println("Version : 1.0");
+        System.out.println("System initialized successfully");
 
-        // Variable to store reversed string
+        String original = "level";
         String reversed = "";
 
-        // Reverse the string using for loop
+
         for (int i = original.length() - 1; i >= 0; i--) {
             reversed = reversed + original.charAt(i);
         }
 
-        // Compare original and reversed strings
+        System.out.println("input : " + original);
         if (original.equals(reversed)) {
-            System.out.println("The string \"" + original + "\" is a palindrome.");
+            System.out.println("is a Palindrome? : true");
         } else {
-            System.out.println("The string \"" + original + "\" is not a palindrome.");
+            System.out.println("is a Palindrome? : false");
         }
     }
 }
