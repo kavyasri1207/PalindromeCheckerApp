@@ -1,28 +1,37 @@
-/**
- * @author Kuljot
- * @version 4.0
- */
+import java.util.Stack;
+import java.util.Scanner;
+
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        System.out.println("Welcome to the Palindrome Checker Management System");
-        System.out.println("Version : 1.0");
-        System.out.println("System initialized successfully");
+        Scanner sc = new Scanner(System.in);
+        Stack<Character> stack = new Stack<>();
 
-        String original = "level";
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
+
+        // Push characters into stack
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
+        }
+
+        // Pop characters to create reversed string
         String reversed = "";
-
-
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed = reversed + original.charAt(i);
+        while (!stack.isEmpty()) {
+            reversed += stack.pop();
         }
 
-        System.out.println("input : " + original);
-        if (original.equals(reversed)) {
-            System.out.println("is a Palindrome? : true");
+        // Print reversed string
+        System.out.println("Reversed String: " + reversed);
+
+        // Check if palindrome
+        if (input.equals(reversed)) {
+            System.out.println("The string is a Palindrome.");
         } else {
-            System.out.println("is a Palindrome? : false");
+            System.out.println("The string is NOT a Palindrome.");
         }
+
+        sc.close();
     }
 }
