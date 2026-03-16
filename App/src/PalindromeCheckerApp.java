@@ -1,12 +1,13 @@
 import java.util.Scanner;
 import java.util.Stack;
 
-// Encapsulated class handling palindrome logic
+// Class responsible only for palindrome checking
 class PalindromeChecker {
 
-    // Method to check palindrome using Stack
+    // Public method to check if a string is palindrome
     public boolean checkPalindrome(String input) {
 
+        // Normalize input (ignore spaces and case)
         String normalized = input.replaceAll("\\s+", "").toLowerCase();
 
         Stack<Character> stack = new Stack<>();
@@ -16,7 +17,7 @@ class PalindromeChecker {
             stack.push(c);
         }
 
-        // Compare original string with stack pop
+        // Compare characters with stack pop
         for (char c : normalized.toCharArray()) {
             if (c != stack.pop()) {
                 return false;
@@ -27,7 +28,7 @@ class PalindromeChecker {
     }
 }
 
-// Main application class
+// Main class
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
