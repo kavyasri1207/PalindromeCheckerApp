@@ -1,40 +1,41 @@
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Scanner;
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-
         System.out.print("Enter a word: ");
         String input = scanner.nextLine();
 
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> deque = new ArrayDeque<>();
 
-        // Enqueue and Push characters
+        // Insert characters into deque
         for (char c : input.toCharArray()) {
-            queue.add(c);      // Enqueue (FIFO)
-            stack.push(c);     // Push (LIFO)
+            deque.addLast(c);
         }
 
         boolean isPalindrome = true;
 
-        System.out.println("\nComparing Dequeue (Queue) vs Pop (Stack):");
+        System.out.println("\nComparing Front and Rear elements:");
 
-        while (!queue.isEmpty()) {
+        // Compare front and rear until deque is empty or has one element
+        while (deque.size() > 1) {
 
-            char fromQueue = queue.remove(); // Dequeue
-            char fromStack = stack.pop();    // Pop
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
 
-            System.out.println("Queue Dequeue: " + fromQueue +
-                    " | Stack Pop: " + fromStack);
+            System.out.println("Front: " + front + " | Rear: " + rear);
 
-            if (fromQueue != fromStack) {
+            if (front != rear) {
                 isPalindrome = false;
+                break;
             }
         }
 
+        // Result
         System.out.println("\nResult:");
         if (isPalindrome) {
             System.out.println("The word is a Palindrome.");
